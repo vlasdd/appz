@@ -14,9 +14,12 @@ const SidebarItem: React.FC<SidebarItemProps> = memo(({ item }) => {
   return (
     <Link
       to={item.path}
-      className={`flex w-full gap-4 items-center justify-center h-[45px] rounded-lg ${isLocationCurrent && 'bg-[#C8BCF6]'}`}
+      className={`flex w-full gap-4 items-center h-[55px] p-[16px] rounded-lg ${isLocationCurrent && 'bg-[#C8BCF6]'}`}
     >
       <Icon />
+      <p className='text-base'>
+        {item.text}
+      </p>
     </Link>
   )
 })

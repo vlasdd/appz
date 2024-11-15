@@ -1,32 +1,6 @@
-import axios from "axios";
-import { useState } from "react";
-import InfoContainer from "./components/InfoContainer"
+import InfoContainer from "./components/InfoContainer";
 
 const Dashboard = () => {
-  const [isUploadOltpLoading, setIsUploadOltpLoading] = useState(false);
-  const [isRunEtlLoading, setIsRunEtlLoading] = useState(false);
-  const [isSynchronizeOlapLoading, setIsSynchronizeOlapLoading] = useState(false);
-
-  const buttonDisabled = isUploadOltpLoading || isRunEtlLoading || isSynchronizeOlapLoading;
-
-  const uploadOltp = async () => {  
-    setIsUploadOltpLoading(true);
-    await axios.post('http://localhost:3001/oltp-olap/upload-oltp');
-    setIsUploadOltpLoading(false);
-  }
-
-  const runEtl = async () => {  
-    setIsRunEtlLoading(true);
-    await axios.post('http://localhost:3001/oltp-olap/run-etl');
-    setIsRunEtlLoading(false);
-  }
-
-  const synchronizeOlap = async () => {
-    setIsSynchronizeOlapLoading(true);
-    await axios.post('http://localhost:3001/oltp-olap/run-etl');
-    setIsSynchronizeOlapLoading(false);
-  }
-
   return (
     <div className="w-full h-screen bg-[#C8BCF6] flex p-[32px] pt-[96px] flex-col justify-start gap-8">
       <p className="text-2xl font-medium ml-8">
@@ -34,32 +8,33 @@ const Dashboard = () => {
       </p>
       <div className="w-full h-[50%] flex gap-16 flex-wrap justify-center">
         <InfoContainer
-          title="Upload OLTP"
-          buttonText="Do it!"
-          buttonDisabled={buttonDisabled}
-          isLoading={isUploadOltpLoading}
-          description="This option allows you to upload OLTP (Online Transaction Processing) data from various datasets"
-          handleClick={uploadOltp}
-        />
-         <InfoContainer
-          title="Run ETL"
-          buttonText="Do it!"
-          buttonDisabled={buttonDisabled}
-          isLoading={isRunEtlLoading}
-          description="This option executes the ETL process, uploading data from the OLTP database to the OLAP one"
-          handleClick={runEtl}
+          title="Development"
+          description="Explore tools and resources for your coding journey. Enhance your programming skills with the latest tutorials and projects."
+          path="/development"
         />
         <InfoContainer
-          title="Synchronize OLAP"
-          buttonText="Do it!"
-          buttonDisabled={buttonDisabled}
-          isLoading={isSynchronizeOlapLoading}
-          description="This option synchronized the OLAP database, filling it with the new data from the OLTP database"
-          handleClick={synchronizeOlap}
+          title="Testing"
+          description="Ensure quality and reliability with our comprehensive testing guides and resources. Master the best practices in software testing and debugging."
+          path="/testing"
+        />
+        <InfoContainer
+          title="Designing"
+          description="Unleash your creativity with design resources and inspiration. Learn new techniques and stay updated with the latest design trends."
+          path="/designing"
+        />
+        <InfoContainer
+          title="Statistics"
+          description="Dive into insightful data on learning trends and patterns. Monitor your progress and achievements through detailed analytics."
+          path="/statistics"
+        />
+        <InfoContainer
+          title="Courses"
+          description="Access a wide range of courses to boost your knowledge and skills. From beginner to advanced levels, find the perfect course for your learning journey."
+          path="/courses"
         />
       </div>
     </div>
   )
 }
 
-export default Dashboard
+export default Dashboard;

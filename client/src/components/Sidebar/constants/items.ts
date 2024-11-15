@@ -1,4 +1,4 @@
-import { Box, Home, Pencil, Cube } from "../../Icons";
+import { ChartPie, Cube, Home, List, Sparkles, Stack } from "../../Icons";
 
 export interface SidebarItemType {
   path: string;
@@ -13,18 +13,28 @@ export const sidebarItemsList: SidebarItemType[] = [
     Icon: Home,
   },
   {
-    path: '/customer-order',
-    text: 'Customer Orders',
-    Icon: Pencil,
+    path: '/testing',
+    text: 'Testing',
+    Icon: Sparkles,
   },
   {
-    path: '/delivery-order',
-    text: 'Delivery Orders',
-    Icon: Box,
+    path: '/development',
+    text: 'Development',
+    Icon: ChartPie,
   },
   {
-    path: '/olap',
-    text: 'Olap Cubes',
+    path: '/designing',
+    text: 'Designing',
     Icon: Cube,
+  },
+  {
+    path: '/statistics',
+    text: 'Statistics',
+    Icon: List,
+  },
+  {
+    path: '/courses',
+    text: 'Courses',
+    Icon: Stack,
   },
 ]

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
+import { Search } from "../Icons";
 import SidebarItem from "./components/SidebarItem"
 import { sidebarItemsList, SidebarItemType } from "./constants/items"
 
@@ -24,7 +25,19 @@ const Sidebar = () => {
   }, [searchValue])
 
   return (
-    <div className="h-screen min-w-[75px] max-w-[75px] flex p-4 gap-8 flex-col pt-16">
+    <div className="h-screen w-[320px] flex p-6 gap-8 flex-col">
+      <p className="text-3xl font-bold">
+        VL
+      </p>
+      <div className="flex w-full gap-4 items-center h-[55px] p-[16px] rounded-2xl bg-[#F5F5F5]">
+        <Search />
+        <input
+          type="text"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Search..."
+        />
+      </div>
       <div className="flex flex-col gap-4">
         {linksItems}
       </div>
