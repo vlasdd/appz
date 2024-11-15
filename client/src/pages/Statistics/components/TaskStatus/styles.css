@@ -1,0 +1,26 @@
+.in_progress{
+  background-color: #e0f8e0;
+  color: #388e3c;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.completed {
+  background-color: #fff3e0;
+  color: #d46f39;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.rejected {
+  background-color: #fce4e4;
+  color: #d32f2f;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+}
