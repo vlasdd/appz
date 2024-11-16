@@ -1,3 +1,14 @@
 #tasks_table table td {
   text-align: center;
 }
+
+.view_details {
+  background-color: #624DE3;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  height: 30px;
+  width: 100px;
+}
