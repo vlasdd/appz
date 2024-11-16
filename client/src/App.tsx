@@ -9,6 +9,7 @@ import Development from "./pages/Development";
 import Testing from "./pages/Testing";
 import Designing from "./pages/Designing";
 import Courses from "./pages/Courses";
+import TaskDetails from "./pages/TaskDetails";
 
 type TRoute = {
   path: string;
@@ -23,6 +24,10 @@ const routesConfig: TRoute[] = [
   {
     path: "/statistics",
     Component: <Statistics />,
+  },
+  {
+    path: "/statistics/:id",
+    Component: <TaskDetails />,
   },
   {
     path: "/development",

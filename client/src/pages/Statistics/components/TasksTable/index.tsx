@@ -4,6 +4,7 @@ import { CircularProgress } from "@mui/material";
 import { tasksData, TaskStatuses } from './data';
 import './styles.css'
 import TaskStatus from "../TaskStatus";
+import { useNavigate } from "react-router-dom";
 
 const getColumns = (viewDetails: (id: string) => void) => [
   {
@@ -88,6 +89,7 @@ const getColumns = (viewDetails: (id: string) => void) => [
 ];
 
 const TasksTable = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -96,11 +98,11 @@ const TasksTable = () => {
     setTimeout(() => {
       setData(tasksData);
       setIsLoading(false);
-    }, 2000)
+    }, 1000)
   }, []);
 
   const viewDetails = (id: string) =>{
-    console.log('Task with id ', id)
+    navigate(`/statistics/${id.slice(1, id.length)}`)
   }
 
   return (
