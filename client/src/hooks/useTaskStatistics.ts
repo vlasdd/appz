@@ -1,4 +1,8 @@
 export const useTaskStatistics = (id?: string) => {
+  if(!id) {
+    throw new Error('Id is required');
+  }
+
   return {
     taskStatistics: {
       oneToThreeRating: 4,

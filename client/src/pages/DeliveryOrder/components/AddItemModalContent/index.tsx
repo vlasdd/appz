@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
-import { formatDate } from "../../../../helpers/formatDate";
 
 type AddItemModalContentProps = {
   onClose: () => void;
@@ -31,7 +30,7 @@ const AddItemModalContent: FC<AddItemModalContentProps> = ({ onClose }) => {
   const [timeTaken, setTimeTaken] = useState(15);
   const [selectedTrafficDensity, setSelectedTrafficDensity] = useState('');
   const [selectedAreaType, setSelectedAreaType] = useState('');
-  const [timeOrderPicked, setTimeOrderPicked] = useState<any>(formatDate(new Date()));
+  const [timeOrderPicked, setTimeOrderPicked] = useState<any>(new Date());
 
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false)

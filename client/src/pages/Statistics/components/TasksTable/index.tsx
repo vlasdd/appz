@@ -5,6 +5,8 @@ import { tasksData, TaskStatuses } from "./data";
 import "./styles.css";
 import TaskStatus from "../TaskStatus";
 import { useNavigate } from "react-router-dom";
+import { getIdForNavigation } from "../../../../helpers/navigation";
+import { formatDate } from "../../../../helpers/date";
 
 const getColumns = (viewDetails: (id: string) => void) => [
   {
@@ -33,6 +35,9 @@ const getColumns = (viewDetails: (id: string) => void) => [
     label: "Date Started",
     options: {
       filter: false,
+      customBodyRender: (value: string) => {
+        return formatDate(value);
+      },
     },
   },
   {
@@ -95,7 +100,7 @@ const TasksTable = () => {
   }, []);
 
   const viewDetails = (id: string) => {
-    navigate(`/statistics/${id.slice(1, id.length)}`);
+    navigate(`/statistics/${getIdForNavigation(id)}`);
   };
 
   return (
