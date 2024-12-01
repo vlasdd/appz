@@ -5,12 +5,13 @@ import { tasksData, TaskStatuses } from "./data";
 import "./styles.css";
 import TaskStatus from "../TaskStatus";
 import { useNavigate } from "react-router-dom";
+import TaskService from '../../../../api/task.api'
 import { getIdForNavigation } from "../../../../helpers/navigation";
 import { formatDate } from "../../../../helpers/date";
 
 const getColumns = (viewDetails: (id: string) => void) => [
   {
-    name: "taskId",
+    name: "task_id",
     label: "Task ID",
     options: {
       filter: false,
@@ -31,7 +32,7 @@ const getColumns = (viewDetails: (id: string) => void) => [
     },
   },
   {
-    name: "dateStarted",
+    name: "date_started",
     label: "Date Started",
     options: {
       filter: false,
@@ -91,13 +92,31 @@ const TasksTable = () => {
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+
   useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setData(tasksData);
-      setIsLoading(false);
-    }, 1000);
+    const fetchTasks = async () => {
+      setIsLoading(true);
+      try {
+        const response = await TaskService.getAllTasks();
+        setData(response.data)
+        console.log('response.data', response)
+      } catch (err) {
+        console.log('error')
+      } finally {
+        setIsLoading(false)
+      }
+    };
+
+    fetchTasks();
   }, []);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     setData(tasksData);
+  //     setIsLoading(false);
+  //   }, 1000);
+  // }, []);
 
   const viewDetails = (id: string) => {
     navigate(`/statistics/${getIdForNavigation(id)}`);

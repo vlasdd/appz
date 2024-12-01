@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import sequelize from './config/db.js';
 import router from './routers/index.js';
+import syncDatabase from './db/syncDb.js';
+import addSampleData from './sidders/index.js';
+import dropAllTables from './db/dropDb.js';
 
 const app = express();
 
@@ -10,13 +13,9 @@ app.use(express.json());
 
 app.use('/', router)
 
-sequelize.authenticate()
-  .then(async () => {
-    console.log('Connection to the database has been established successfully.');
-  })
-  .catch((error) => {
-    console.error('Unable to connect to the database:', error);
-  });
+
+syncDatabase().then(() => addSampleData())
+// dropAllTables()
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

@@ -1,38 +1,13 @@
 import { Router } from 'express';
-
-import customerOrderRoute from './customerOrder.route.js';
-import restaurantRoute from './restaurant.route.js';
-import deliveryReportRoute from './deliveryReport.route.js'
-import deliveryOrderRoute from './deliveryOrder.route.js'
-import oltpOlapRoute from './oltpOlap.route.js'
+import taskRouter from './tasks.route.js'
 
 const router = Router();
 
 const defaultRoutes = [
 	{
-		path: '/customer-order',
-		route: customerOrderRoute,
+		path: '/tasks',
+		route: taskRouter,
     middleware: [],
-	},
-	{
-		path: '/restaurant',
-		route: restaurantRoute,
-		middleware: [],
-	},
-	{
-		path: '/delivery-report',
-		route: deliveryReportRoute,
-		middleware: [],
-	},
-	{
-		path: '/delivery-order',
-		route: deliveryOrderRoute,
-		middleware: [],
-	},
-	{
-		path: '/oltp-olap',
-		route: oltpOlapRoute,
-		middleware: [],
 	},
 ];
 
