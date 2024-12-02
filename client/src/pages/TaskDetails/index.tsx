@@ -1,43 +1,57 @@
 import { CircularProgress } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
-import { tasksData, TaskStatuses } from '../Statistics/components/TasksTable/data';
-import TaskStatus from "../Statistics/components/TaskStatus";
-import { Pie } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
   ArcElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend
+  CategoryScale, Chart as ChartJS, Legend, LinearScale,
+  Tooltip
 } from 'chart.js';
-import { useTaskStatistics } from "../../hooks/useTaskStatistics";
+import { useEffect, useState } from "react";
+import { Pie } from 'react-chartjs-2';
+import { useParams } from "react-router-dom";
+import TaskService from '../../api/task.api';
+import UserService from '../../api/user.api';
+import { TaskStatuses } from '../Statistics/components/TasksTable/data';
+import TaskStatus from "../Statistics/components/TaskStatus";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const TaskDetails = () => {
   const [taskDetails, setTaskDetails] = useState<any>(null);
+  const [taskStatistics, setTaskStatistics] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [user, setUser] = useState<any>(null);
 
   const { id } = useParams();
-  const { user } = useAuth();
-  const { taskStatistics } = useTaskStatistics(id);
 
   useEffect(() => {
-    setTimeout(() => {
-      const task = tasksData.find((task) => task.taskId === `#${id}`);
-      setTaskDetails(task);
-      setIsLoading(false);
-    }, 1000)
-  }, []);
+    const fetchTask = async () => {
+      if(!id) {
+        return;
+      }
+
+      try {
+        const taskDetailsResponse = await TaskService.getTaskById(id);
+        setTaskDetails(taskDetailsResponse.data)
+
+        const userResponse = await UserService.getUser();
+        setUser(userResponse.data)
+
+        const taskStatisticsResponse = await TaskService.getTaskStatistics(id);
+        setTaskStatistics(taskStatisticsResponse.data)
+      } catch (err) {
+        console.log('error: ', err)
+      } finally {
+        setIsLoading(false)
+      }
+    };
+
+    fetchTask();
+  }, [id]);
 
   const data = {
     labels: ['Score 1-3', 'Score 4-6', 'Score 7-9', 'Score 10-11', 'Score 12'],
     datasets: [
       {
-        data: Object.values(taskStatistics),
+        data: taskStatistics ? Object.values(taskStatistics) : {},
         backgroundColor: ['#61b2fd', '#9bdfc3', '#f99bab', '#ffb44f', '#a097f8'],
       },
     ],
@@ -50,17 +64,17 @@ const TaskDetails = () => {
           <CircularProgress sx={{ color: '#C8BCF6' }} />
         ) : (
           <>
-            <img src={taskDetails.imageUrl} className="w-full h-[200px] object-cover rounded-t-lg" />
+            <img src={taskDetails.image_url} className="w-full h-[200px] object-cover rounded-t-lg" />
             <div className="w-full flex gap-12 p-4">
               <div className="flex flex-col gap-4 w-[55%]">
                 <div className="flex justify-between w-full items-center">
-                  <p className="font-bold text-2xl">{taskDetails.taskId} / {taskDetails.title.toUpperCase()}</p>
+                  <p className="font-bold text-2xl">{taskDetails.task_id} / {taskDetails.title.toUpperCase()}</p>
                   <TaskStatus variant={taskDetails.status as TaskStatuses} />
                 </div>
                 <p className="text-[#979797] font-semibold text-md">{taskDetails.course.toUpperCase()}</p>
                 <div className="flex w-full justify-between items-center">
                   <div className="flex gap-2 items-center">
-                    <img src={user.imageUrl} className="w-16 h-16" />
+                    <img src={user.image_url} className="w-16 h-16" />
                     <p className="font-semibold text-md">{user.username}</p>
                   </div>
                   <p className="font-semibold text-md">Score: {taskDetails.score}</p>

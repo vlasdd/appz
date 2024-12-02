@@ -9,6 +9,7 @@ async function addSampleData() {
         password: 'password123',
         first_name: 'John',
         last_name: 'Doe',
+        image_url: 'https://static.vecteezy.com/system/resources/previews/030/750/807/non_2x/user-icon-in-trendy-outline-style-isolated-on-white-background-user-silhouette-symbol-for-your-website-design-logo-app-ui-illustration-eps10-free-vector.jpg'
       },
     });
 
@@ -28,7 +29,7 @@ async function addSampleData() {
         score: '6/10',
         details: 'This task contains... ',
         status: 'completed',
-        image_url: 'https://example.com/image1.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Lorem ipsum dolor sit amet...',
       },
       {
@@ -40,7 +41,7 @@ async function addSampleData() {
         score: '7/10',
         details: 'This task involves creating a responsive website.',
         status: 'in_progress',
-        image_url: 'https://example.com/image2.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Proin euismod imperdiet velit...',
       },
       {
@@ -52,7 +53,7 @@ async function addSampleData() {
         score: '8/10',
         details: 'This task requires writing a technical blog post.',
         status: 'completed',
-        image_url: 'https://example.com/image3.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Curabitur non nulla sit amet...',
       },
       {
@@ -64,7 +65,7 @@ async function addSampleData() {
         score: '9/10',
         details: 'This task involves building a RESTful API.',
         status: 'completed',
-        image_url: 'https://example.com/image4.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Aenean lacinia bibendum nulla...',
       },
       {
@@ -76,7 +77,7 @@ async function addSampleData() {
         score: '5/10',
         details: 'This task is about database design.',
         status: 'rejected',
-        image_url: 'https://example.com/image5.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Lorem ipsum dolor sit amet...',
       },
       {
@@ -88,7 +89,7 @@ async function addSampleData() {
         score: '8/10',
         details: 'This task focuses on algorithm optimization.',
         status: 'completed',
-        image_url: 'https://example.com/image6.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Integer nec odio. Praesent libero...',
       },
       {
@@ -100,7 +101,7 @@ async function addSampleData() {
         score: '6/10',
         details: 'This task involves debugging a large codebase.',
         status: 'in_progress',
-        image_url: 'https://example.com/image7.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Sed cursus ante dapibus diam...',
       },
       {
@@ -112,7 +113,7 @@ async function addSampleData() {
         score: '7/10',
         details: 'This task is about creating a presentation.',
         status: 'completed',
-        image_url: 'https://example.com/image8.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Nulla quis sem at nibh elementum...',
       },
       {
@@ -124,7 +125,7 @@ async function addSampleData() {
         score: '9/10',
         details: 'This task involves testing a web app.',
         status: 'rejected',
-        image_url: 'https://example.com/image9.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Duis sagittis ipsum. Praesent mauris...',
       },
       {
@@ -136,7 +137,7 @@ async function addSampleData() {
         score: '10/10',
         details: 'This task focuses on documentation.',
         status: 'completed',
-        image_url: 'https://example.com/image10.jpg',
+        image_url: 'https://instructor-academy.onlinecoursehost.com/content/images/size/w2000/2023/05/How-to-Create-an-Online-Course-For-Free--Complete-Guide--6.jpg',
         answer: 'Fusce nec tellus sed augue semper...',
       },
     ];
